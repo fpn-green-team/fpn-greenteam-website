@@ -1000,32 +1000,48 @@
         </div>
       </div>
 
-      <div class="contact-form-wrap reveal">
-        <div class="form-group">
-          <label data-en>Name</label>
-          <label data-nl>Naam</label>
-          <input type="text" placeholder="Your name">
+    <!-- ...existing code... -->
+        <div class="contact-form-wrap reveal">
+          <div class="form-group">
+            <label data-en>Name</label>
+            <label data-nl>Naam</label>
+            <input type="text" id="name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label data-en>Email</label>
+            <label data-nl>E-mail</label>
+            <input type="email" id="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label data-en>Message</label>
+            <label data-nl>Bericht</label>
+            <textarea id="message" placeholder="What's on your mind?"></textarea>
+          </div>
+          <button class="btn-submit" data-en onclick="sendMail()">Send message</button>
+          <button class="btn-submit" data-nl onclick="sendMail()">Bericht versturen</button>
         </div>
-        <div class="form-group">
-          <label data-en>Email</label>
-          <label data-nl>E-mail</label>
-          <input type="email" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-          <label data-en>Message</label>
-          <label data-nl>Bericht</label>
-          <textarea placeholder="What's on your mind?"></textarea>
-        </div>
-        <!--
-          NOTE: This form doesn't send emails by default.
-          To make it functional, connect it to a service like Formspree:
-          1. Go to formspree.io, create an account, get your form endpoint
-          2. Change the <form> tag to: <form action="https://formspree.io/f/YOUR_ID" method="POST">
-          Or use Netlify Forms, EmailJS, or a simple mailto link.
-        -->
-        <button class="btn-submit" data-en>Send message</button>
-        <button class="btn-submit" data-nl>Bericht versturen</button>
       </div>
+    </div>
+  </section>
+  <!-- ...existing code... --><div class="contact-form-wrap reveal">
+    <div class="form-group">
+      <label data-en>Name</label>
+      <label data-nl>Naam</label>
+      <input type="text" id="name" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label data-en>Email</label>
+      <label data-nl>E-mail</label>
+      <input type="email" id="email" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label data-en>Message</label>
+      <label data-nl>Bericht</label>
+      <textarea id="message" placeholder="What's on your mind?"></textarea>
+    </div>
+    <button class="btn-submit" data-en onclick="sendMail()">Send message</button>
+    <button class="btn-submit" data-nl onclick="sendMail()">Bericht versturen</button>
+  </div>
     </div>
   </div>
 </section>
@@ -1039,7 +1055,17 @@
   <div class="footer-text" data-nl>© 2025 FPN Green Team</div>
 </footer>
 
+
+
 <script>
+
+function sendMail() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  window.location.href = `mailto:fpngreenteam@gmail.com?subject=Message from ${name}&body=${message}%0A%0AReply to: ${email}`;
+}
+
   function setLang(lang) {
     document.body.className = 'lang-' + lang;
     document.querySelectorAll('.lang-btn').forEach(btn => {
