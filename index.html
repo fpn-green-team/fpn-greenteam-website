@@ -6,7 +6,7 @@
 <title>FPN Green Team</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Oswald:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
   :root {
     --green-dark: #1a3d0f;
@@ -56,15 +56,27 @@
   .nav-logo img {
     height: 40px;
     width: 40px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   .nav-wordmark {
-    font-family: 'Playfair Display', serif;
     font-size: 1rem;
     color: var(--green-dark);
+    line-height: 1;
+  }
+
+  .nav-wordmark .wm-fpn,
+  .nav-wordmark .wm-team {
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .nav-wordmark .wm-green {
+    font-family: 'Pacifico', cursive;
+    color: var(--green-mid);
+    font-size: 1.1em;
   }
 
   .nav-links {
@@ -705,7 +717,7 @@
 <nav>
   <a href="#" class="nav-logo">
     <img src="logo.png" alt="FPN Green Team logo" onerror="this.style.display='none'">
-    <div class="nav-wordmark">FPN Green Team</div>
+    <div class="nav-wordmark"><span class="wm-fpn">FPN</span> <span class="wm-green">Green</span> <span class="wm-team">Team</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#about" data-en>About</a><a href="#about" data-nl>Over ons</a></li>
