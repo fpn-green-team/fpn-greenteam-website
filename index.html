@@ -553,6 +553,133 @@
     flex-wrap: wrap;
   }
 
+  /* MEDIA */
+  #media {
+    background: var(--white);
+  }
+
+  .media-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 2rem 0 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .media-tab {
+    padding: 0.45rem 1.2rem;
+    border: 1px solid rgba(59,109,17,0.25);
+    border-radius: 20px;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .media-tab.active,
+  .media-tab:hover {
+    background: var(--green-mid);
+    color: var(--white);
+    border-color: var(--green-mid);
+  }
+
+  .media-grid {
+    columns: 3;
+    column-gap: 1rem;
+  }
+
+  @media (max-width: 900px) { .media-grid { columns: 2; } }
+  @media (max-width: 540px) { .media-grid { columns: 1; } }
+
+  .media-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: var(--green-pale);
+  }
+
+  .media-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .media-item:hover img {
+    transform: scale(1.03);
+  }
+
+  .media-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,61,15,0);
+    transition: background 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+
+  .media-item:hover .media-item-overlay {
+    background: rgba(26,61,15,0.35);
+  }
+
+  .media-item-label {
+    font-size: 0.8rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .media-item:hover .media-item-label {
+    opacity: 1;
+  }
+
+  /* Video cards */
+  .media-item.video-item .media-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .media-play-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .media-item:hover .media-play-btn {
+    transform: scale(1.1);
+    background: white;
+  }
+
+  .media-placeholder {
+    width: 100%;
+    background: var(--green-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-mid);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
   /* CONTACT */
   #contact {
     background: var(--cream);
@@ -723,6 +850,7 @@
     <li><a href="#about" data-en>About</a><a href="#about" data-nl>Over ons</a></li>
     <li><a href="#events" data-en>Events</a><a href="#events" data-nl>Evenementen</a></li>
     <li><a href="#team" data-en>Team</a><a href="#team" data-nl>Team</a></li>
+    <li><a href="#media" data-en>Media</a><a href="#media" data-nl>Media</a></li>
     <li><a href="#join" data-en>Join us</a><a href="#join" data-nl>Doe mee</a></li>
     <li><a href="#contact" data-en>Contact</a><a href="#contact" data-nl>Contact</a></li>
   </ul>
@@ -824,8 +952,8 @@
           <img src="AgathasAlmanac.png" alt="Agatha's Almanac" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="event-body">
-          <div class="event-date" data-en>Coming soon</div>
-          <div class="event-date" data-nl>Binnenkort</div>
+          <div class="event-date" data-en>Coming soon – Wed 22 April</div>
+          <div class="event-date" data-nl>Binnenkort – Wo 22 april</div>
           <div class="event-title" data-en>Movie Screening at Lumière</div>
           <div class="event-title" data-nl>filmbezoek bij Lumière</div>
           <div class="event-desc" data-en>A screening of "Agatha's Almanac" at Lumière cinema, welcome for all! Reduced student tickets available.</div>
@@ -923,6 +1051,97 @@
   </div>
 </section>
 
+<!-- MEDIA -->
+<section id="media">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en>Memories & resources</p>
+    <p class="section-label reveal" data-nl>Herinneringen & bronnen</p>
+    <h2 class="section-title reveal" data-en>Media library</h2>
+    <h2 class="section-title reveal" data-nl>Mediathek</h2>
+    <p class="reveal" style="color:var(--text-muted);max-width:560px;line-height:1.8;" data-en>Photos from our events, recordings of lectures and talks we've hosted, and more.</p>
+    <p class="reveal" style="color:var(--text-muted);max-width:560px;line-height:1.8;" data-nl>Foto's van onze evenementen, opnames van lezingen en meer.</p>
+
+    <div class="media-tabs reveal">
+      <button class="media-tab active" onclick="filterMedia('all')" data-en>All</button>
+      <button class="media-tab active" onclick="filterMedia('all')" data-nl>Alles</button>
+      <button class="media-tab" onclick="filterMedia('photo')" data-en>Photos</button>
+      <button class="media-tab" onclick="filterMedia('photo')" data-nl>Foto's</button>
+      <button class="media-tab" onclick="filterMedia('video')" data-en>Videos</button>
+      <button class="media-tab" onclick="filterMedia('video')" data-nl>Video's</button>
+    </div>
+
+    <div class="media-grid reveal">
+
+      <!-- PHOTOS — replace src with real images, set data-event to match the event name -->
+      <!-- Tall photo -->
+      <div class="media-item" data-type="photo">
+        <div class="media-placeholder" style="aspect-ratio:3/4;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Add photo caption</span><span class="media-item-label" data-nl>Voeg bijschrift toe</span></div>
+      </div>
+
+      <!-- Wide photo -->
+      <div class="media-item" data-type="photo">
+        <div class="media-placeholder" style="aspect-ratio:4/3;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Add photo caption</span><span class="media-item-label" data-nl>Voeg bijschrift toe</span></div>
+      </div>
+
+      <!-- Video card -->
+      <div class="media-item video-item" data-type="video">
+        <div class="media-placeholder" style="aspect-ratio:16/9; background: linear-gradient(135deg, #1a3d0f, #3b6d11);">
+          <!-- Replace the div above with <img src="video-thumbnail.jpg"> when you have a thumbnail -->
+        </div>
+        <div class="media-play">
+          <div class="media-play-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#3b6d11"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Lecture title here</span><span class="media-item-label" data-nl>Titel lezing hier</span></div>
+      </div>
+
+      <!-- Square photo -->
+      <div class="media-item" data-type="photo">
+        <div class="media-placeholder" style="aspect-ratio:1/1;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Add photo caption</span><span class="media-item-label" data-nl>Voeg bijschrift toe</span></div>
+      </div>
+
+      <!-- Tall photo -->
+      <div class="media-item" data-type="photo">
+        <div class="media-placeholder" style="aspect-ratio:2/3;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Add photo caption</span><span class="media-item-label" data-nl>Voeg bijschrift toe</span></div>
+      </div>
+
+      <!-- Video card -->
+      <div class="media-item video-item" data-type="video">
+        <div class="media-placeholder" style="aspect-ratio:16/9; background: linear-gradient(135deg, #27500a, #639922);">
+        </div>
+        <div class="media-play">
+          <div class="media-play-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#3b6d11"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Lecture title here</span><span class="media-item-label" data-nl>Titel lezing hier</span></div>
+      </div>
+
+      <!-- Wide photo -->
+      <div class="media-item" data-type="photo">
+        <div class="media-placeholder" style="aspect-ratio:3/2;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <div class="media-item-overlay"><span class="media-item-label" data-en>Add photo caption</span><span class="media-item-label" data-nl>Voeg bijschrift toe</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- JOIN -->
 <section id="join">
   <div class="section-inner" style="text-align: center;">
@@ -930,8 +1149,8 @@
     <p class="section-label" data-nl>Doe mee</p>
     <h2 class="section-title reveal" data-en>Want to make a <em>difference?</em></h2>
     <h2 class="section-title reveal" data-nl>Wil jij een <em>verschil maken?</em></h2>
-    <p class="reveal" data-en>We're always looking for motivated students to join the Green Team. Whether you want to organise events, run campaigns, or just help out where needed — there's a place for you.</p>
-    <p class="reveal" data-nl>We zijn altijd op zoek naar gemotiveerde studenten die zich bij het Green Team willen aansluiten. Of je nu evenementen wilt organiseren, campagnes wilt voeren of gewoon wilt helpen waar nodig — er is een plek voor jou.</p>
+    <p class="reveal" data-en>We're always looking for motivated students to join our FPN Green Team. Whether you want to organise events, run campaigns, come to meetings, or just help out where needed – there's a place for you.</p>
+    <p class="reveal" data-nl>We zijn altijd op zoek naar gemotiveerde studenten die zich bij het FPN Green Team willen aansluiten. Of je nu evenementen wilt organiseren, campagnes wilt voeren of gewoon wilt helpen waar nodig — er is een plek voor jou.</p>
     <div class="join-ctas reveal">
       <!--
         REPLACE THESE HREFS:
@@ -1025,6 +1244,21 @@
 
 
 <script>
+
+function filterMedia(type) {
+  document.querySelectorAll('.media-tab').forEach(btn => btn.classList.remove('active'));
+  // activate all clicked tabs (EN+NL pair)
+  document.querySelectorAll('.media-tab').forEach(btn => {
+    if (btn.getAttribute('onclick') === `filterMedia('${type}')`) btn.classList.add('active');
+  });
+  document.querySelectorAll('.media-item').forEach(item => {
+    if (type === 'all' || item.dataset.type === type) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
 
 function sendMail() {
   const name = document.getElementById('name').value;
