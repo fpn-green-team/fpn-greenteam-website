@@ -35,7 +35,7 @@
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 200;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -873,7 +873,7 @@
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 65px; left: 0; right: 0; bottom: 0;
     background: rgba(245,242,235,0.97);
     backdrop-filter: blur(12px);
     z-index: 150;
@@ -936,7 +936,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="#" class="nav-logo" onclick="if(document.getElementById('mobileMenu').classList.contains('open')) toggleMenu()">
     <img src="logo.png" alt="FPN Green Team logo" onerror="this.style.display='none'">
     <div class="nav-wordmark"><span class="wm-fpn">FPN</span> <span class="wm-green">Green</span> <span class="wm-team">Team</span></div>
   </a>
