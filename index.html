@@ -842,12 +842,77 @@
   }
 
   /* RESPONSIVE */
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--green-dark);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(245,242,235,0.97);
+    backdrop-filter: blur(12px);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--green-dark);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--green-mid); }
+
+  .mobile-menu .mobile-lang {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--green-mid);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     section { padding: 4rem 1.5rem; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     footer { padding: 1.5rem; flex-direction: column; text-align: center; }
     .nav-links { display: none; }
+    .lang-toggle { display: none; }
+    .hamburger { display: flex; }
   }
 
   /* HIDE/SHOW lang content */
@@ -887,7 +952,30 @@
     <button class="lang-btn active" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('nl')">NL</button>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()" data-en>About</a>
+  <a href="#about" onclick="toggleMenu()" data-nl>Over ons</a>
+  <a href="#events" onclick="toggleMenu()" data-en>Events</a>
+  <a href="#events" onclick="toggleMenu()" data-nl>Evenementen</a>
+  <a href="#team" onclick="toggleMenu()" data-en>Team</a>
+  <a href="#team" onclick="toggleMenu()" data-nl>Team</a>
+  <a href="#media" onclick="toggleMenu()" data-en>Media</a>
+  <a href="#media" onclick="toggleMenu()" data-nl>Media</a>
+  <a href="#join" onclick="toggleMenu()" data-en>Join us</a>
+  <a href="#join" onclick="toggleMenu()" data-nl>Doe mee</a>
+  <a href="#contact" onclick="toggleMenu()" data-en>Contact</a>
+  <a href="#contact" onclick="toggleMenu()" data-nl>Contact</a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" onclick="setLang('en'); toggleMenu()">EN</button>
+    <button class="lang-btn" onclick="setLang('nl'); toggleMenu()">NL</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -926,7 +1014,9 @@
         <h2 class="section-title" data-nl>Studenten voor een <em>groener</em> FPN</h2>
         <p data-en>The FPN Green Team is a student-led sustainability initiative at the Faculty of Psychology and Neuroscience (FPN) at Maastricht University. We bring together students and staff who want to make a positive difference, starting right here at our faculty.</p>
         <p data-nl>Het FPN Green Team is een door studenten geleid duurzaamheidsinitiatief van de Faculteit Psychologie en Neurowetenschap (FPN) aan de Universiteit Maastricht. We brengen studenten samen die het verschil willen maken, beginnen hier op onze faculteit.</p>
-        <p data-en>We are part of the Green Office and Green Network at Maastricht University.</p>
+        <p data-en>Our mission is to drive a culture of sustainability and awareness, actively promoting positive environmental change, fostering collaboration, and empowering the university community to engage in sustainability-focused initiatives, thereby contributing to the University's sustainability roadmap.</p>
+        <p data-nl>Onze missie is het stimuleren van een cultuur van duurzaamheid en bewustzijn, het actief bevorderen van positieve milieuwijzigingen, het bevorderen van samenwerking en het versterken van de universitaire gemeenschap om deel te nemen aan initiatieven gericht op duurzaamheid, en zo bij tedragen aan de duurzaamheidsroutekaart van de Universiteit.</p>
+        <p data-en>The FPN Green Team is supported by the UM Sustainability Office and UM Green Office.</p>
         <p data-nl>We maken deel uit van het Green Office en Green Network van de Universiteit Maastricht.</p>
         <p data-en>We organise events, contribute to the annual sustainability days, and work with faculty staff to create systemic change in our faculty. Guided by the UN Sustainable Development Goals, we tackle everything from waste reduction to climate awareness.</p>
         <p data-nl>We organiseren evenementen, bijdragen aan de jaarlijkse sustainability days en werken samen met medewerkers van de faculteit om systemische verandering te realiseren. Geleid door de Duurzame Ontwikkelingsdoelen van de VN pakken we alles aan, van afvalvermindering tot klimaatbewustzijn.</p>
@@ -1277,6 +1367,14 @@
 
 
 <script>
+
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
 
 function filterMedia(type) {
   document.querySelectorAll('.media-tab').forEach(btn => btn.classList.remove('active'));
