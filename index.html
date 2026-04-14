@@ -387,6 +387,28 @@
   .sdg-item span {
     position: relative;
     z-index: 1;
+    transition: opacity 0.2s;
+  }
+
+  .sdg-item::after {
+    content: attr(data-goal);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.2s;
+    border-radius: 4px;
+  }
+
+  .sdg-item:hover::after {
+    opacity: 1;
   }
 
   .sdg-intro {
@@ -918,23 +940,23 @@
 
       <div class="sdg-grid">
         <!-- All 17 SDGs with their official colors -->
-        <a class="sdg-item" style="background:#e5243b;" href="https://sdgs.un.org/goals/goal1" target="_blank"><span>No Poverty</span></a>
-        <a class="sdg-item" style="background:#dda63a;" href="https://sdgs.un.org/goals/goal2" target="_blank"><span>Zero Hunger</span></a>
-        <a class="sdg-item" style="background:#4c9f38;" href="https://sdgs.un.org/goals/goal3" target="_blank"><span>Good Health & Well-being</span></a>
-        <a class="sdg-item" style="background:#c5192d;" href="https://sdgs.un.org/goals/goal4" target="_blank"><span>Quality Education</span></a>
-        <a class="sdg-item" style="background:#ff3a21;" href="https://sdgs.un.org/goals/goal5" target="_blank"><span>Gender Equality</span></a>
-        <a class="sdg-item" style="background:#26bde2;" href="https://sdgs.un.org/goals/goal6" target="_blank"><span>Clean Water & Sanitation</span></a>
-        <a class="sdg-item" style="background:#fcc30b;" href="https://sdgs.un.org/goals/goal7" target="_blank"><span>Affordable Clean Energy</span></a>
-        <a class="sdg-item" style="background:#a21942;" href="https://sdgs.un.org/goals/goal8" target="_blank"><span>Decent Work & Growth</span></a>
-        <a class="sdg-item" style="background:#fd6925;" href="https://sdgs.un.org/goals/goal9" target="_blank"><span>Industry & Innovation</span></a>
-        <a class="sdg-item" style="background:#dd1367;" href="https://sdgs.un.org/goals/goal10" target="_blank"><span>Reduced Inequalities</span></a>
-        <a class="sdg-item" style="background:#fd9d24;" href="https://sdgs.un.org/goals/goal11" target="_blank"><span>Sustainable Cities</span></a>
-        <a class="sdg-item" style="background:#bf8b2e;" href="https://sdgs.un.org/goals/goal12" target="_blank"><span>Responsible Consumption</span></a>
-        <a class="sdg-item" style="background:#3f7e44;" href="https://sdgs.un.org/goals/goal13" target="_blank"><span>Climate Action</span></a>
-        <a class="sdg-item" style="background:#0a97d9;" href="https://sdgs.un.org/goals/goal14" target="_blank"><span>Life Below Water</span></a>
-        <a class="sdg-item" style="background:#56c02b;" href="https://sdgs.un.org/goals/goal15" target="_blank"><span>Life on Land</span></a>
-        <a class="sdg-item" style="background:#00689d;" href="https://sdgs.un.org/goals/goal16" target="_blank"><span>Peace, Justice & Institutions</span></a>
-        <a class="sdg-item" style="background:#19486a;" href="https://sdgs.un.org/goals/goal17" target="_blank"><span>Partnerships for Goals</span></a>
+        <a class="sdg-item" style="background:#e5243b;" href="https://sdgs.un.org/goals/goal1" target="_blank" data-goal="Goal 1"><span>No Poverty</span></a>
+        <a class="sdg-item" style="background:#dda63a;" href="https://sdgs.un.org/goals/goal2" target="_blank" data-goal="Goal 2"><span>Zero Hunger</span></a>
+        <a class="sdg-item" style="background:#4c9f38;" href="https://sdgs.un.org/goals/goal3" target="_blank" data-goal="Goal 3"><span>Good Health & Well-being</span></a>
+        <a class="sdg-item" style="background:#c5192d;" href="https://sdgs.un.org/goals/goal4" target="_blank" data-goal="Goal 4"><span>Quality Education</span></a>
+        <a class="sdg-item" style="background:#ff3a21;" href="https://sdgs.un.org/goals/goal5" target="_blank" data-goal="Goal 5"><span>Gender Equality</span></a>
+        <a class="sdg-item" style="background:#26bde2;" href="https://sdgs.un.org/goals/goal6" target="_blank" data-goal="Goal 6"><span>Clean Water & Sanitation</span></a>
+        <a class="sdg-item" style="background:#fcc30b;" href="https://sdgs.un.org/goals/goal7" target="_blank" data-goal="Goal 7"><span>Affordable Clean Energy</span></a>
+        <a class="sdg-item" style="background:#a21942;" href="https://sdgs.un.org/goals/goal8" target="_blank" data-goal="Goal 8"><span>Decent Work & Growth</span></a>
+        <a class="sdg-item" style="background:#fd6925;" href="https://sdgs.un.org/goals/goal9" target="_blank" data-goal="Goal 9"><span>Industry & Innovation</span></a>
+        <a class="sdg-item" style="background:#dd1367;" href="https://sdgs.un.org/goals/goal10" target="_blank" data-goal="Goal 10"><span>Reduced Inequalities</span></a>
+        <a class="sdg-item" style="background:#fd9d24;" href="https://sdgs.un.org/goals/goal11" target="_blank" data-goal="Goal 11"><span>Sustainable Cities</span></a>
+        <a class="sdg-item" style="background:#bf8b2e;" href="https://sdgs.un.org/goals/goal12" target="_blank" data-goal="Goal 12"><span>Responsible Consumption</span></a>
+        <a class="sdg-item" style="background:#3f7e44;" href="https://sdgs.un.org/goals/goal13" target="_blank" data-goal="Goal 13"><span>Climate Action</span></a>
+        <a class="sdg-item" style="background:#0a97d9;" href="https://sdgs.un.org/goals/goal14" target="_blank" data-goal="Goal 14"><span>Life Below Water</span></a>
+        <a class="sdg-item" style="background:#56c02b;" href="https://sdgs.un.org/goals/goal15" target="_blank" data-goal="Goal 15"><span>Life on Land</span></a>
+        <a class="sdg-item" style="background:#00689d;" href="https://sdgs.un.org/goals/goal16" target="_blank" data-goal="Goal 16"><span>Peace, Justice & Institutions</span></a>
+        <a class="sdg-item" style="background:#19486a;" href="https://sdgs.un.org/goals/goal17" target="_blank" data-goal="Goal 17"><span>Partnerships for Goals</span></a>
       </div>
     </div>
   </div>
