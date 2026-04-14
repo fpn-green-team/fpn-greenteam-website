@@ -477,13 +477,15 @@
   }
 
   .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
   }
 
   .member-card {
+    width: 200px;
     text-align: center;
   }
 
@@ -1154,8 +1156,8 @@
     <p class="section-label" data-nl>Doe mee</p>
     <h2 class="section-title reveal" data-en>Want to make a <em>difference?</em></h2>
     <h2 class="section-title reveal" data-nl>Wil jij een <em>verschil maken?</em></h2>
-    <p class="reveal" data-en>We're always looking for motivated students to join our FPN Green Team. Whether you want to organise events, run campaigns, come to meetings, or just help out where needed – there's a place for you.</p>
-    <p class="reveal" data-nl>We zijn altijd op zoek naar gemotiveerde studenten die zich bij het FPN Green Team willen aansluiten. Of je nu evenementen wilt organiseren, campagnes wilt voeren of gewoon wilt helpen waar nodig — er is een plek voor jou.</p>
+    <p class="reveal" data-en>We're always looking for motivated students to join our Green Team. Whether you want to organise events, come to meetings, realize your own ideas, or just help out where needed – there's a place for you.</p>
+    <p class="reveal" data-nl>We zijn altijd op zoek naar gemotiveerde studenten die zich bij het Green Team willen aansluiten. Of je nu evenementen wilt organiseren, campagnes wilt voeren of gewoon wilt helpen waar nodig — er is een plek voor jou.</p>
     <div class="join-ctas reveal">
       <!--
         REPLACE THESE HREFS:
@@ -1180,7 +1182,7 @@
         <p class="section-label" data-nl>Neem contact op</p>
         <h2 class="section-title" data-en>We'd love to <em>hear</em> from you</h2>
         <h2 class="section-title" data-nl>We horen <em>graag</em> van je</h2>
-        <p data-en>Questions, ideas, or just want to say hi? Reach out via the form or find us on social media.</p>
+        <p data-en>Questions, ideas for events, or just want to say hi? Reach out via the form or find us on social media.</p>
         <p data-nl>Vragen, ideeën, of gewoon even gedag zeggen? Neem contact op via het formulier of vind ons op sociale media.</p>
 
         <div class="social-links">
