@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FPN Green Team</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" id="favicon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Oswald:wght@700&family=Pacifico&display=swap" rel="stylesheet">
@@ -1422,6 +1422,22 @@ function sendMail() {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   reveals.forEach(el => observer.observe(el));
+
+  (function() {
+    var canvas = document.createElement('canvas');
+    canvas.width = 64; canvas.height = 64;
+    var ctx = canvas.getContext('2d');
+    var img = new Image();
+    img.onload = function() {
+      ctx.beginPath();
+      ctx.arc(32, 32, 32, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(img, 0, 0, 64, 64);
+      document.getElementById('favicon').href = canvas.toDataURL();
+    };
+    img.src = 'logo.png';
+  })();
 </script>
 </body>
 </html>
