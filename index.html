@@ -406,6 +406,90 @@
     max-width: 620px;
   }
 
+  /* FEATURED EVENT */
+  .featured-event {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a3d0f, #3b6d11);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: stretch;
+    min-height: 260px;
+  }
+
+  .featured-event-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    background: var(--green-soft);
+    color: var(--green-dark);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  .featured-event-body {
+    flex: 1;
+    padding: 3.5rem 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 1;
+  }
+
+  .featured-event-date {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--green-soft);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-event-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .featured-event-img {
+    flex: 0 0 40%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-event-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+
+  .featured-event-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #27500a, #4c9f38);
+    opacity: 0.5;
+  }
+
+  @media (max-width: 700px) {
+    .featured-event { flex-direction: column; }
+    .featured-event-img { flex: 0 0 180px; }
+  }
+
   /* EVENTS */
   #events {
     background: var(--cream);
@@ -1071,6 +1155,24 @@
   <div class="section-inner">
     <p class="section-label reveal" data-en>What we do</p>
     <p class="section-label reveal" data-nl>Wat we doen</p>
+
+    <!-- FEATURED EVENT -->
+    <div class="featured-event reveal">
+      <span class="featured-event-badge" data-en>Annual highlight</span>
+      <span class="featured-event-badge" data-nl>Jaarlijks hoogtepunt</span>
+      <div class="featured-event-body">
+        <div class="featured-event-date" data-en>Coming soon — Add dates here</div>
+        <div class="featured-event-date" data-nl>Binnenkort — Voeg datums toe</div>
+        <div class="featured-event-title" data-en>UM Sustainability Days</div>
+        <div class="featured-event-title" data-nl>UM Duurzaamheidsdagen</div>
+        <div class="featured-event-desc" data-en>Our biggest annual event — a faculty-wide celebration of sustainability across all UM Green Teams. Multiple events, workshops, and activities throughout the week.</div>
+        <div class="featured-event-desc" data-nl>Ons grootste jaarlijkse evenement — een faculteitsbrede viering van duurzaamheid met alle UM Green Teams. Meerdere evenementen, workshops en activiteiten door de hele week.</div>
+      </div>
+      <div class="featured-event-img">
+        <!-- Replace with: <img src="images/events/sustainability-days.jpg" alt="Sustainability Days"> -->
+        <div class="featured-event-img-placeholder"></div>
+      </div>
+    </div>
 
     <!-- UPCOMING EVENTS -->
     <h2 class="section-title reveal" data-en>Upcoming events</h2>
