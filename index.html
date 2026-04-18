@@ -418,6 +418,32 @@
     margin-top: 3rem;
   }
 
+  .events-carousel {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+    cursor: grab;
+  }
+
+  .events-carousel:active { cursor: grabbing; }
+
+  .events-carousel::-webkit-scrollbar { height: 4px; }
+  .events-carousel::-webkit-scrollbar-track { background: var(--green-pale); border-radius: 2px; }
+  .events-carousel::-webkit-scrollbar-thumb { background: var(--green-soft); border-radius: 2px; }
+
+  .events-carousel .event-card {
+    flex: 0 0 calc(50% - 0.75rem);
+    scroll-snap-align: start;
+  }
+
+  @media (max-width: 600px) {
+    .events-carousel .event-card { flex: 0 0 85%; }
+  }
+
   .event-card {
     background: var(--white);
     border-radius: 4px;
@@ -1071,7 +1097,7 @@
     <h2 class="section-title reveal" style="margin-top: 4rem;" data-en>Past events</h2>
     <h2 class="section-title reveal" style="margin-top: 4rem;" data-nl>Eerdere evenementen</h2>
 
-    <div class="events-grid">
+    <div class="events-carousel">
       <!-- Add past event cards here -->
       <div class="event-card reveal">
         <div class="event-img">
@@ -1434,6 +1460,19 @@ function sendMail() {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   reveals.forEach(el => observer.observe(el));
+
+  const carousel = document.querySelector('.events-carousel');
+  if (carousel) {
+    let isDown = false, startX, scrollLeft;
+    carousel.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
+    carousel.addEventListener('mouseleave', () => isDown = false);
+    carousel.addEventListener('mouseup', () => isDown = false);
+    carousel.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX);
+    });
+  }
 
   (function() {
     var canvas = document.createElement('canvas');
