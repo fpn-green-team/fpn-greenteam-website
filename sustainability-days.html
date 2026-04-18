@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustainability Days – FPN Green Team</title>
+<link rel="icon" id="favicon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Oswald:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a3d0f;
+    --green-mid: #3b6d11;
+    --green-light: #639922;
+    --green-pale: #eaf3de;
+    --green-soft: #c0dd97;
+    --cream: #f5f2eb;
+    --text: #1a1a18;
+    --text-muted: #5a5a55;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(245,242,235,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59,109,17,0.12);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--green-dark);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo img {
+    height: 36px; width: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--green-mid); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a3d0f 0%, #3b6d11 60%, #27500a 100%);
+    padding: 8rem 3rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.18;
+  }
+
+  .hero-img img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--green-soft);
+    color: var(--green-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-date {
+    font-size: 1rem;
+    color: var(--green-soft);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* PROGRAMME */
+  .programme {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .programme-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .programme-intro .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .programme-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--green-dark);
+    font-weight: 700;
+  }
+
+  .day-block {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(59,109,17,0.12);
+    background: var(--white);
+  }
+
+  .day-header {
+    background: var(--green-dark);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .day-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-soft);
+  }
+
+  .day-date {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .event-list { padding: 0.5rem 0; }
+
+  .event-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid rgba(59,109,17,0.07);
+  }
+
+  .event-row:last-child { border-bottom: none; }
+
+  .event-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-top: 0.15rem;
+    min-width: 110px;
+  }
+
+  .event-info { flex: 1; }
+
+  .event-name {
+    font-weight: 600;
+    color: var(--green-dark);
+    font-size: 0.975rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .event-location {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+  }
+
+  .note {
+    background: var(--green-pale);
+    border-left: 3px solid var(--green-mid);
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--green-mid);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .back-btn:hover { background: var(--green-dark); }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .programme { padding: 3rem 1rem 4rem; }
+    .event-row { flex-direction: column; gap: 0.25rem; }
+    .event-time { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="FPN Green Team logo">
+    FPN Green Team
+  </a>
+  <a href="index.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to website
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-img">
+    <img src="images/events/susdaystree.png" alt="">
+  </div>
+  <div class="hero-content">
+    <span class="hero-badge">Annual highlight</span>
+    <h1>UM Sustainability Days</h1>
+    <div class="hero-date">22 April – 22 May 2025</div>
+    <p>A university-wide celebration of sustainability across all UM Green Teams — workshops, activities, and events at every faculty.</p>
+  </div>
+</div>
+
+<div class="programme">
+  <div class="programme-intro">
+    <p class="section-label">FPN Green Team programme</p>
+    <h2>Our events this year</h2>
+  </div>
+
+  <div class="day-block">
+    <div class="day-header">
+      <span class="day-name">Tue</span>
+      <span class="day-date">28 / 04</span>
+    </div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-time">10:00–12:00 & 13:00–15:00</div>
+        <div class="event-info">
+          <div class="event-name">Tote-Bag Painting</div>
+          <div class="event-location">UNS40</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-time">14:30–15:30</div>
+        <div class="event-info">
+          <div class="event-name">Outdoor Yoga</div>
+          <div class="event-location">Outside UNS40 & UNS50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-header">
+      <span class="day-name">Wed</span>
+      <span class="day-date">29 / 04</span>
+    </div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-time">from 12:00</div>
+        <div class="event-info">
+          <div class="event-name">Veggie Get Together</div>
+          <div class="event-location">UNS40</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-time">13:30–15:30</div>
+        <div class="event-info">
+          <div class="event-name">Glass Painting</div>
+          <div class="event-location">UNS40</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-time">from 13:00</div>
+        <div class="event-info">
+          <div class="event-name">Hiking Sint Pietersberg</div>
+          <div class="event-location">Meeting point: Sustainability Hub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-header">
+      <span class="day-name">Thu</span>
+      <span class="day-date">30 / 04</span>
+    </div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-time">11:00–13:00</div>
+        <div class="event-info">
+          <div class="event-name">Planting & DIY Pots</div>
+          <div class="event-location">UNS40</div>
+        </div>
+      </div>
+      <div class="event-row">
+        <div class="event-time">16:00–20:00</div>
+        <div class="event-info">
+          <div class="event-name">Flea Market</div>
+          <div class="event-location">Sustainability Hub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    More events may be added — keep an eye on our Instagram <a href="https://www.instagram.com/fpn_greenteam" target="_blank" style="color:var(--green-mid);">@fpn_greenteam</a> for updates!
+  </div>
+
+  <a href="index.html" class="back-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to website
+  </a>
+</div>
+
+<script>
+  (function() {
+    var canvas = document.createElement('canvas');
+    canvas.width = 64; canvas.height = 64;
+    var ctx = canvas.getContext('2d');
+    var img = new Image();
+    img.onload = function() {
+      ctx.beginPath();
+      ctx.arc(32, 32, 32, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(img, 0, 0, 64, 64);
+      document.getElementById('favicon').href = canvas.toDataURL();
+    };
+    img.src = 'logo.png';
+  })();
+</script>
+</body>
+</html>
