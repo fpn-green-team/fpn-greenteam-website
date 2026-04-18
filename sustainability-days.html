@@ -7,7 +7,7 @@
 <link rel="icon" id="favicon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Oswald:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Oswald:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
   :root {
     --green-dark: #1a3d0f;
@@ -44,11 +44,21 @@
     gap: 0.75rem;
     text-decoration: none;
     color: var(--green-dark);
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .nav-wordmark .wm-fpn,
+  .nav-wordmark .wm-team {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+  }
+
+  .nav-wordmark .wm-green {
+    font-family: 'Pacifico', cursive;
+    color: var(--green-mid);
+    font-size: 1.1em;
   }
 
   .nav-logo img {
@@ -76,6 +86,16 @@
     position: relative;
     overflow: hidden;
   }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 61, 15, 0.45);
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
 
   .hero-img {
     position: absolute;
@@ -266,7 +286,7 @@
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="FPN Green Team logo">
-    FPN Green Team
+    <div class="nav-wordmark"><span class="wm-fpn">FPN</span> <span class="wm-green">Green</span> <span class="wm-team">Team</span></div>
   </a>
   <a href="index.html" class="back-link">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -299,7 +319,7 @@
     </div>
     <div class="event-list">
       <div class="event-row">
-        <div class="event-time">10:00–12:00 & 13:00–15:00</div>
+        <div class="event-time">10:00–12:00<br>13:00–15:00</div>
         <div class="event-info">
           <div class="event-name">Tote-Bag Painting</div>
           <div class="event-location">UNS40</div>
