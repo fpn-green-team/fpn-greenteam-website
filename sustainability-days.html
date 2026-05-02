@@ -152,9 +152,9 @@
     margin: 0 auto;
   }
 
-  /* PROGRAMME */
+  /* PROGRAMME / RECAP */
   .programme {
-    max-width: 800px;
+    max-width: 860px;
     margin: 0 auto;
     padding: 4rem 2rem 6rem;
   }
@@ -180,80 +180,81 @@
     font-weight: 700;
   }
 
-  .day-block {
-    margin-bottom: 2rem;
+  .recap-day-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .recap-day-label:first-of-type { margin-top: 0; }
+
+  .recap-card {
+    background: var(--white);
+    border: 1px solid rgba(59,109,17,0.12);
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(59,109,17,0.12);
-    background: var(--white);
+    margin-bottom: 1rem;
   }
 
-  .day-header {
-    background: var(--green-dark);
-    color: var(--white);
-    padding: 1rem 1.5rem;
+  .recap-card-header {
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid rgba(59,109,17,0.08);
     display: flex;
     align-items: baseline;
-    gap: 1rem;
+    gap: 1.25rem;
+    flex-wrap: wrap;
   }
 
-  .day-name {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.85rem;
+  .recap-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--green-soft);
+    color: var(--green-dark);
   }
 
-  .day-date {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .event-list { padding: 0.5rem 0; }
-
-  .event-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 0.9rem 1.5rem;
-    border-bottom: 1px solid rgba(59,109,17,0.07);
-  }
-
-  .event-row:last-child { border-bottom: none; }
-
-  .event-time {
+  .recap-card-meta {
     font-size: 0.8rem;
     color: var(--text-muted);
-    white-space: nowrap;
-    padding-top: 0.15rem;
-    min-width: 110px;
+    letter-spacing: 0.02em;
   }
 
-  .event-info { flex: 1; }
-
-  .event-name {
-    font-weight: 600;
-    color: var(--green-dark);
-    font-size: 0.975rem;
-    margin-bottom: 0.15rem;
+  .recap-card-body {
+    padding: 1.25rem 1.5rem;
   }
 
-  .event-name a {
-    color: var(--green-dark);
-    text-decoration: underline;
-    text-decoration-color: rgba(59,109,17,0.35);
-    text-underline-offset: 2px;
-    transition: color 0.2s;
-  }
-
-  .event-name a:hover { color: var(--green-light); }
-
-  .event-location {
-    font-size: 0.83rem;
+  .recap-card-body p {
+    font-size: 0.9rem;
     color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .recap-card-body p:last-child { margin-bottom: 0; }
+
+  .recap-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .recap-gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .recap-gallery.wide img { height: 260px; }
+
+  @media (max-width: 540px) {
+    .recap-gallery { grid-template-columns: 1fr; }
+    .recap-gallery img { height: 200px; }
   }
 
   .note {
@@ -284,9 +285,87 @@
 
   .back-btn:hover { background: var(--green-dark); }
 
+  /* FEATURED EVENT BANNER */
+  .page-hero-wrap {
+    padding-top: 72px;
+  }
+
+  .featured-event {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a3d0f, #3b6d11);
+    display: flex;
+    align-items: stretch;
+    min-height: 260px;
+  }
+
+  .featured-event-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--green-soft);
+    color: var(--green-dark);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .featured-event-body {
+    flex: 1;
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .featured-event-date {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--green-soft);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-event-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .featured-event-img {
+    flex: 0 0 40%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-event-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 700px) {
+    .featured-event { flex-direction: column; }
+    .featured-event-img { flex: 0 0 200px; }
+    .featured-event-body { padding: 2rem 1.5rem; }
+  }
+
   @media (max-width: 600px) {
     nav { padding: 1rem 1.5rem; }
-    .hero { padding: 7rem 1.5rem 3rem; }
     .programme { padding: 3rem 1rem 4rem; }
     .event-row { flex-direction: column; gap: 0.25rem; }
     .event-time { min-width: unset; }
@@ -306,109 +385,113 @@
   </a>
 </nav>
 
-<div class="hero">
-  <div class="hero-img">
-    <img src="images/events/susdaystree.png" alt="">
-  </div>
-  <div class="hero-content">
-    <span class="hero-badge">Annual highlight</span>
-    <h1>UM Sustainability Days</h1>
-    <div class="hero-date">22 April – 22 May 2025</div>
-    <p>A university-wide celebration of sustainability across all UM Green Teams: workshops, activities, and events at every faculty.</p>
+<div class="page-hero-wrap">
+  <div class="featured-event">
+    <div class="featured-event-body">
+      <span class="featured-event-badge">Past event</span>
+      <div class="featured-event-date">22 April – 22 May 2026</div>
+      <div class="featured-event-title">UM Sustainability Days 2026</div>
+      <div class="featured-event-desc">A university-wide celebration of sustainability across all UM Green Teams: workshops, activities, and events at every faculty.</div>
+    </div>
+    <div class="featured-event-img">
+      <img src="images/events/susdaystree.png" alt="UM Sustainability Days 2026">
+    </div>
   </div>
 </div>
 
 <div class="programme">
   <div class="programme-intro">
-    <p class="section-label">FPN Green Team programme</p>
-    <h2>Our events this year</h2>
+    <p class="section-label">FPN Green Team · April 2026</p>
+    <h2>Event Recap</h2>
   </div>
 
-  <div class="day-block">
-    <div class="day-header">
-      <span class="day-name">Tue</span>
-      <span class="day-date">28 / 04</span>
+  <!-- Tuesday 28 April -->
+  <div class="recap-day-label">Tue · 28 April</div>
+
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Tote-Bag Painting</div>
+      <div class="recap-card-meta">10:00–12:00 & 13:00–15:00 · UNS40</div>
     </div>
-    <div class="event-list">
-      <div class="event-row">
-        <div class="event-time">10:00–12:00<br>13:00–15:00</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://forms.gle/BtWk7kNSAX9j9W8v8" target="_blank">Tote-Bag Painting</a></div>
-          <div class="event-location">UNS40</div>
-        </div>
-      </div>
-      <div class="event-row">
-        <div class="event-time">14:30–15:30</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://docs.google.com/forms/d/e/1FAIpQLScajgUxZcH2oPf2KfQOleQM-NlW9HnNQONJNIsyJ2-X00tlyA/viewform?usp=dialog" target="_blank">Outdoor Yoga</a></div>
-          <div class="event-location">Outside UNS40 & UNS50</div>
-        </div>
-      </div>
+    <div class="recap-card-body">
+      <p>Participants painted and decorated their own tote bags using sustainable fabric paint — a creative and eco-friendly take-home from Sustainability Days.</p>
     </div>
   </div>
 
-  <div class="day-block">
-    <div class="day-header">
-      <span class="day-name">Wed</span>
-      <span class="day-date">29 / 04</span>
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Outdoor Yoga</div>
+      <div class="recap-card-meta">14:30–15:30 · Outside UNS40 & UNS50</div>
     </div>
-    <div class="event-list">
-      <div class="event-row">
-        <div class="event-time">from 12:00</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://docs.google.com/forms/d/e/1FAIpQLScQfQy4fCPwpwbFzFoErCclEC6XylbVfV4B9ckynAaiIWBJGA/viewform?usp=dialog" target="_blank">Veggie Get Together</a></div>
-          <div class="event-location">UNS40</div>
-        </div>
-      </div>
-      <div class="event-row">
-        <div class="event-time">13:30–15:30</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://forms.gle/BtWk7kNSAX9j9W8v8" target="_blank">Glass Painting</a></div>
-          <div class="event-location">UNS40</div>
-        </div>
-      </div>
-      <div class="event-row">
-        <div class="event-time">from 13:00</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://forms.gle/sFoBFmtSPWNYJ1AF9" target="_blank">Hiking Sint Pietersberg</a></div>
-          <div class="event-location">Meeting point: Sustainability Hub</div>
-        </div>
+    <div class="recap-card-body">
+      <p>A calm outdoor yoga session in the fresh spring air, bringing students together to unwind and reconnect with nature right on campus.</p>
+    </div>
+  </div>
+
+  <!-- Wednesday 29 April -->
+  <div class="recap-day-label">Wed · 29 April</div>
+
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Veggie Get Together</div>
+      <div class="recap-card-meta">from 12:00 · UNS40</div>
+    </div>
+    <div class="recap-card-body">
+      <p>A relaxed outdoor lunch bringing students and staff together over plant-based food. A lovely afternoon of good conversation and good vibes.</p>
+      <div class="recap-gallery">
+        <img src="images/events/sustainability%20days/picnic.jpg" alt="Veggie Get Together">
+        <img src="images/events/sustainability%20days/picnic2.jpg" alt="Veggie Get Together">
+        <img src="images/events/sustainability%20days/picnic3.jpg" alt="Veggie Get Together">
+        <img src="images/events/sustainability%20days/picnic4.png" alt="Veggie Get Together">
       </div>
     </div>
   </div>
 
-  <div class="day-block">
-    <div class="day-header">
-      <span class="day-name">Thu</span>
-      <span class="day-date">30 / 04</span>
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Glass Painting</div>
+      <div class="recap-card-meta">13:30–15:30 · UNS40</div>
     </div>
-    <div class="event-list">
-      <div class="event-row">
-        <div class="event-time">11:00–13:00</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://forms.gle/BtWk7kNSAX9j9W8v8" target="_blank">Planting & DIY Pots</a></div>
-          <div class="event-location">UNS40</div>
-        </div>
-      </div>
-      <div class="event-row">
-        <div class="event-time">16:00–20:00</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://docs.google.com/forms/d/e/1FAIpQLScUgPP08EtVO8Olfbi_U9Y3ZmWPBzOTwIzFiHgkEbKup4fQSw/viewform" target="_blank">Flea Market – own stand</a></div>
-          <div class="event-location">Sustainability Hub</div>
-        </div>
-      </div>
-      <div class="event-row">
-        <div class="event-time">16:00–20:00</div>
-        <div class="event-info">
-          <div class="event-name"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfOqKkdaptkFpGbinRGBCw_SDseOLUpPZP23JZBPAfjTeuV3A/viewform" target="_blank">Flea Market – visitor</a></div>
-          <div class="event-location">Sustainability Hub</div>
-        </div>
-      </div>
+    <div class="recap-card-body">
+      <p>Students got creative decorating glass jars and bottles — turning everyday objects into one-of-a-kind keepsakes.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Hiking Sint Pietersberg</div>
+      <div class="recap-card-meta">from 13:00 · Meeting point: Sustainability Hub</div>
+    </div>
+    <div class="recap-card-body">
+      <p>A guided hike through the beautiful Sint Pietersberg nature reserve, just outside Maastricht — a perfect way to celebrate Earth and the outdoors.</p>
+    </div>
+  </div>
+
+  <!-- Thursday 30 April -->
+  <div class="recap-day-label">Thu · 30 April</div>
+
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Planting & DIY Pots</div>
+      <div class="recap-card-meta">11:00–13:00 · UNS40</div>
+    </div>
+    <div class="recap-card-body">
+      <p>Participants planted seedlings and decorated their own pots to take home — a hands-on reminder that sustainability starts small.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-card-header">
+      <div class="recap-card-title">Flea Market</div>
+      <div class="recap-card-meta">16:00–20:00 · Sustainability Hub</div>
+    </div>
+    <div class="recap-card-body">
+      <p>A bustling second-hand market at the Sustainability Hub, with students and staff buying, selling, and swapping pre-loved items — the perfect closing event for Sustainability Days.</p>
     </div>
   </div>
 
   <div class="note">
-    More events may be added — keep an eye on our Instagram <a href="https://www.instagram.com/fpn_greenteam" target="_blank" style="color:var(--green-mid);">@fpn_greenteam</a> for updates!
+    Thank you to everyone who joined us for Sustainability Days 2026! Follow us on Instagram <a href="https://www.instagram.com/fpn_greenteam" target="_blank" style="color:var(--green-mid);">@fpn_greenteam</a> to stay up to date on future events.
   </div>
 
   <a href="index.html" class="back-btn">
